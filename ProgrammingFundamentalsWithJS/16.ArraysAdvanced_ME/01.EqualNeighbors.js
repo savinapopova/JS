@@ -19,6 +19,6 @@ function solve(matrix) {
     }
 
     function isInBounds(row, col) {
-        return row >= 0 && row < matrix.length && col >= 0 ** col < matrix[row].length;
+        return row >= 0 && row < matrix.length && col >= 0 && col < matrix[row].length;
     }
 }
