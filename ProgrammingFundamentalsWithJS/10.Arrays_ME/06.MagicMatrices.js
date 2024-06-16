@@ -3,7 +3,7 @@ function solve(matrix) {
     let sums = new Set();
 
     for (let row = 0; row < matrix.length; row++) {
-        let sum = matrix[row].reduce((a,b) => a +b, 0);
+        let sum = matrix[row].reduce((a,b) => a + b, 0);
         sums.add(sum);
     }
     let turned = [];
