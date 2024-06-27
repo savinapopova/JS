@@ -1,4 +1,11 @@
 **/.idea/
-node_modules/
+**/.vscode/
+**/*.code-workspace
+**/*.sublime-workspace
+**/.DS_Store
+**/Thumbs.db
+**/ehthumbs.db
+**/Desktop.ini
+**/node_modules/
 
 
