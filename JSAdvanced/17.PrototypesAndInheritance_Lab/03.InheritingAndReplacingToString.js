@@ -42,8 +42,6 @@ function result() {
 
     }
 
-
-
     return {
         Person,
         Teacher,
