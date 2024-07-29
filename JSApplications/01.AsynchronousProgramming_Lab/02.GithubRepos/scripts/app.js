@@ -20,7 +20,9 @@ function loadRepos() {
 	}
 
 	function onError(error) {
-		list.textContent = error;
+		let li = document.createElement('li');
+		li.textContent = error;
+		list.replaceChildren(li);
 	}
 
 	function createElement(entry) {
