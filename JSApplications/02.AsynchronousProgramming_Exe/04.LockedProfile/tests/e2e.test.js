@@ -1,7 +1,7 @@
 const { chromium } = require('playwright-chromium');
 const { expect } = require('chai');
 
-const host = 'http://localhost:3000'; // Application host (NOT service host - that can be anything)
+const host = 'http://localhost:63342/SoftUni-JavaScript/JSApplications/02.AsynchronousProgramming_Exe/04.LockedProfile/index.html?_ijt=7jktmjflq2s8eggisj971cnatm&_ij_reload=RELOAD_ON_SAVE'; // Application host (NOT service host - that can be anything)
 
 const DEBUG = false;
 const slowMo = 500;
@@ -37,7 +37,7 @@ describe('E2E tests', function () {
   after(async () => await browser.close());
   beforeEach(async () => {
     context = await browser.newContext();
-    setupContext(context);
+    await setupContext(context);
     page = await context.newPage();
   });
   afterEach(async () => {
