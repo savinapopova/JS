@@ -13,16 +13,18 @@ async function solve() {
         event.preventDefault();
         let formData = new FormData(event.target);
 
-        if (formData.entries() < 4) {
-            alert("All fields should be filled!")
-            return;
-        }
+
        let {
            firstName,
            lastName,
            facultyNumber,
            grade
        } = Object.fromEntries(formData.entries());
+
+       if (!firstName.trim() || !lastName.trim() || !facultyNumber.trim() || !grade.trim()) {
+              alert('All fields are required!');
+              return;
+       }
 
         let body = {
             firstName,
