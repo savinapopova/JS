@@ -5,10 +5,7 @@ modifyNav();
 let form = document.querySelector('form');
 
 form.addEventListener('submit', onRegister);
-let registerNavBtn = document.querySelector('#guest #register');
-let homeNavBtn = document.querySelector('#home');
-registerNavBtn.classList.add('active');
-homeNavBtn.classList.remove('active');
+
 
 
 async function onRegister(event) {
