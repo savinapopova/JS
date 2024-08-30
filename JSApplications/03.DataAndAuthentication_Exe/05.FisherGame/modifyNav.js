@@ -12,6 +12,7 @@ export function modifyNav() {
     let loginNavBtn = document.querySelector('#guest #login');
     console.log(loginNavBtn);
 
+
     if (window.location.pathname.endsWith('index.html') ) {
         homeNavBtn.classList.add('active');
         registerNavBtn.classList.remove('active');
@@ -27,11 +28,11 @@ export function modifyNav() {
     }
 
     if (isLoggedIn) {
-        loggedUserNav.style.visibility = 'visible';
-        guestUserNav.style.visibility = 'hidden';
+        loggedUserNav.classList.remove('hide-navigation');
+        guestUserNav.classList.add('hide-navigation');
         emailSpan.textContent = JSON.parse(sessionStorage.getItem('user')).email
     } else {
-        loggedUserNav.style.visibility = 'hidden';
-        guestUserNav.style.visibility = 'visible';
+        loggedUserNav.classList.add('hide-navigation');
+        guestUserNav.classList.remove('hide-navigation');
     }
 }
