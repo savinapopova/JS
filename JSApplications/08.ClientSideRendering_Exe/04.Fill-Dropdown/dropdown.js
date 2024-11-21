@@ -28,6 +28,7 @@ if (text === '') {
     alert("No text inserted");
     return;
 }
+
     await post(url, {text});
     input.value = '';
     await loadOptions();
