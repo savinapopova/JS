@@ -1,4 +1,4 @@
-import {getUrl, html, render} from "./lib.js";
+import {getUrl, html, page, render} from "./lib.js";
 import {post} from "./request.js";
 
 
@@ -56,11 +56,14 @@ async function onRegister(event, ctx) {
     }
 
     let user =  await post(getUrl().register,{email, password});
-    sessionStorage.setItem("user", JSON.stringify(user));
+
+    if (user) {
+        sessionStorage.setItem('user', JSON.stringify(user));
+        page.redirect('/');
+    }
+
 
     console.log('Ready!!');
-
-    ctx.page.redirect('/');
 
 
 }

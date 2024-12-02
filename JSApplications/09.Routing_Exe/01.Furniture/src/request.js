@@ -1,3 +1,4 @@
+import {page} from "./lib.js";
 async function makeRequest(url, options) {
     try {
         let response = await fetch(url, options);
@@ -11,9 +12,16 @@ async function makeRequest(url, options) {
 
 
         if (!response.ok) {
+            if (response.status === 403) {
+                sessionStorage.clear();
+            }
             let error = await response.json();
             throw new Error(error.message);
         }
+
+
+
+
 
         return await response.json();
     } catch (e) {

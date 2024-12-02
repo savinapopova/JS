@@ -40,8 +40,10 @@ async function onLogin(event,ctx) {
     let password = entries.password.trim();
 
     let user = await post(getUrl().login, {email, password});
-    sessionStorage.setItem('user', JSON.stringify(user));
-    ctx.page.redirect('/');
+    if (user) {
+        sessionStorage.setItem('user', JSON.stringify(user));
+        page.redirect('/');
+    }
 }
 
 export async function logout() {

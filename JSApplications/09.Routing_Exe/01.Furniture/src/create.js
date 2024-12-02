@@ -1,4 +1,5 @@
-import {html, render} from "./lib.js";
+import {getUrl, html, render} from "./lib.js";
+import {post} from "./request.js";
 
 
 export function showCreate(ctx) {
@@ -51,7 +52,7 @@ export function showCreate(ctx) {
     render(createTemplate, ctx.root);
 }
 
-function onCreate(event, ctx) {
+async function onCreate(event, ctx) {
     event.preventDefault();
 
     let formData = new FormData(event.target);
@@ -60,6 +61,11 @@ function onCreate(event, ctx) {
     console.log(entries);
 
     let body = validateEntries(entries);
+
+    if (body) {
+        await post(getUrl().catalog, body, JSON.parse(sessionStorage.getItem('user')).accessToken);
+        ctx.page.redirect('/');
+    }
 
 }
 
@@ -97,7 +103,8 @@ function validateEntries(entries) {
         description,
         price,
         img,
-        material
+        material,
+        _ownerId: JSON.parse(sessionStorage.getItem('user'))._id
     };
 
 
