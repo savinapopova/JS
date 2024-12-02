@@ -13,14 +13,14 @@
     class ServiceError extends Error {
         constructor(message = 'Service Error') {
             super(message);
-            this.name = 'ServiceError'; 
+            this.name = 'ServiceError';
         }
     }
 
     class NotFoundError extends ServiceError {
         constructor(message = 'Resource not found') {
             super(message);
-            this.name = 'NotFoundError'; 
+            this.name = 'NotFoundError';
             this.status = 404;
         }
     }
@@ -28,7 +28,7 @@
     class RequestError extends ServiceError {
         constructor(message = 'Request error') {
             super(message);
-            this.name = 'RequestError'; 
+            this.name = 'RequestError';
             this.status = 400;
         }
     }
@@ -36,7 +36,7 @@
     class ConflictError extends ServiceError {
         constructor(message = 'Resource conflict') {
             super(message);
-            this.name = 'ConflictError'; 
+            this.name = 'ConflictError';
             this.status = 409;
         }
     }
@@ -44,7 +44,7 @@
     class AuthorizationError extends ServiceError {
         constructor(message = 'Unauthorized') {
             super(message);
-            this.name = 'AuthorizationError'; 
+            this.name = 'AuthorizationError';
             this.status = 401;
         }
     }
@@ -52,7 +52,7 @@
     class CredentialError extends ServiceError {
         constructor(message = 'Forbidden') {
             super(message);
-            this.name = 'CredentialError'; 
+            this.name = 'CredentialError';
             this.status = 403;
         }
     }
@@ -556,7 +556,7 @@
             if (query.pageSize) {
                 responseData = responseData.slice(0, pageSize);
             }
-    		
+
     		if (query.distinct) {
                 const props = query.distinct.split(',').filter(p => p != '');
                 responseData = Object.values(responseData.reduce((distinct, c) => {
@@ -832,7 +832,7 @@
     function createInstance(seedData = {}) {
         const collections = new Map();
 
-        // Initialize seed data from file    
+        // Initialize seed data from file
         for (let collectionName in seedData) {
             if (seedData.hasOwnProperty(collectionName)) {
                 const collection = new Map();
@@ -1285,7 +1285,7 @@
                     propRules = ruleOrDefault(propRules, getPropRule(allPropRules, action));
                 }
 
-                // Rules by record id 
+                // Rules by record id
                 const recordRules = collectionRules[data._id];
                 if (recordRules !== undefined) {
                     currentRule = ruleOrDefault(currentRule, recordRules[action]);
