@@ -6,6 +6,7 @@ import {logout, showLogin} from "./login.js";
 import {showCreate} from "./create.js";
 import {showDetails} from "./details.js";
 import {showEdit} from "./edit.js";
+import {showMyFurniture} from "./myFurniture.js";
 
 document.getElementById('logoutBtn').addEventListener('click', logout);
 
@@ -15,6 +16,7 @@ page('/login',ctxDecoration, showLogin);
 page('/create', ctxDecoration, showCreate);
 page('/details/:id', ctxDecoration, showDetails);
 page('/edit/:id', ctxDecoration, showEdit);
+page('/my-furniture', ctxDecoration, showMyFurniture);
 
 
 
