@@ -55,7 +55,18 @@ const post = async (url, body,token) => {
     }
    return await makeRequest(url, options);
 }
-const del = (url) => makeRequest(url, { method: 'DELETE' });
+const del = async (url, token) => {
+    let options = {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json',
+            'X-Authorization': token
+        }
+    };
+    return await makeRequest(url, options);
+}
+
+
+
 const put = (url, body) => makeRequest(url, {
     method: 'PUT',
     headers: {'Content-Type': 'application/json'},

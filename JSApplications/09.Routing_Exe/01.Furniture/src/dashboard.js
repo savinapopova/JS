@@ -11,7 +11,7 @@ const furnitureCard = (piece) => html`
                     <p>Price: <span>${piece.price} $</span></p>
                 </footer>
                 <div>
-                    <a href=”/details/${piece._id}” class="btn btn-info">Details</a>
+                    <a href=details/${piece._id} class="btn btn-info">Details</a>
                 </div>
             </div>
         </div>
