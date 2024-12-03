@@ -1,5 +1,6 @@
 import {getUrl, html, render} from "./lib.js";
 import {del, get} from "./request.js";
+import {showEdit} from "./edit.js";
 
 export async function showDetails(ctx) {
     let id = ctx.params.id;
@@ -33,7 +34,7 @@ export async function showDetails(ctx) {
                 ${item._ownerId === JSON.parse(sessionStorage.getItem('user'))._id 
                         ? html`
                     <div>
-                        <a href=”#” class="btn btn-info">Edit</a>
+                        <a href="/edit/${item._id}" class="btn btn-info">Edit</a>
                         <a @click = "${(event)=> onDelete(event, item._id, ctx)}" href=”javascript:void(0)” class="btn btn-red">Delete</a>
                     </div>
                 `

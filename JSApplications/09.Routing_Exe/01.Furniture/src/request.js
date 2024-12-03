@@ -67,11 +67,16 @@ const del = async (url, token) => {
 
 
 
-const put = (url, body) => makeRequest(url, {
-    method: 'PUT',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(body)
-});
+const put = async (url, body, token) => {
+
+    let options = {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json',
+            'X-Authorization': token},
+        body: JSON.stringify(body)
+    };
+    return await makeRequest(url, options);
+}
 
 
 export { get, post, del, put};

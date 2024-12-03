@@ -69,7 +69,7 @@ async function onCreate(event, ctx) {
 
 }
 
-function validateEntries(entries) {
+export function validateEntries(entries) {
     let make = entries.make.trim();
     if (make < 4) {
         return alert('Make must be at least 4 characters long');
