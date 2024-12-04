@@ -21,8 +21,6 @@ const loginTemplate = (ctx) => html`
 
 
 export function showLogin(ctx) {
-
-
     render(loginTemplate(ctx), ctx.root);
 }
 
