@@ -25,7 +25,7 @@ async function makeRequest(url, options) {
 
         return await response.json();
     } catch (err) {
-        return err;
+        throw err;
     }
 }
 

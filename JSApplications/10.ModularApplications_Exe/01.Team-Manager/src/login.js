@@ -44,10 +44,13 @@ async function onLogin(event, ctx) {
     try {
         ctx.error = null;
         let user = await post(getUrl().login, {email, password});
-        localStorage.setItem('user', JSON.stringify(user));
+        if (!user) {
+            throw new Error('Invalid server response. Please try again.');
+        }
+        sessionStorage.setItem('user', JSON.stringify(user));
         page.redirect('/');
     } catch (e) {
-        ctx.error = e;
+        ctx.error = { message: e.message || 'Login failed!' };;
         console.log(e);
         render(loginTemplate(ctx), ctx.root);
         return;
