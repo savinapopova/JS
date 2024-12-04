@@ -5,4 +5,16 @@ function loggedUser() {
     return localStorage.getItem('user');
 }
 
-export {html, render, page, loggedUser};
+function getUrl() {
+    const urls = {
+        register: 'http://localhost:3030/users/register',
+        login: 'http://localhost:3030/users/login',
+        logout: 'http://localhost:3030/users/logout',
+        catalog: 'http://localhost:3030/data/catalog/',
+
+    }
+
+    return urls;
+}
+
+export {html, render, page, loggedUser, getUrl};
