@@ -1,5 +1,5 @@
 import {getUrl, html, render, page} from "./lib.js";
-import {post} from "./request.js";
+import {get, post} from "./request.js";
 
 const loginTemplate = (ctx) => html`
         <section id="login">
@@ -13,7 +13,7 @@ const loginTemplate = (ctx) => html`
                                     <label>Password: <input type="password" name="password"></label>
                                     <input class="action cta" type="submit" value="Sign In">
                                 </form>
-                                <footer class="pad-small">Don't have an account? <a href="#" class="invert">Sign up here</a>
+                                <footer class="pad-small">Don't have an account? <a href="/register" class="invert">Sign up here</a>
                                 </footer>
                             </article>
                         </section>
@@ -53,6 +53,12 @@ async function onLogin(event, ctx) {
         render(loginTemplate(ctx), ctx.root);
         return;
     }
+}
+
+export async function logout() {
+    await get(getUrl().logout, JSON.parse(sessionStorage.getItem('user')).accessToken);
+    sessionStorage.clear();
+    page.redirect('/');
 }
 
 
