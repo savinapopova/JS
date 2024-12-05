@@ -1,4 +1,4 @@
-import {html, loggedUser, render} from "./lib.js";
+import {html, loggedUser, render} from "../api/lib.js";
 
 export function showHome(ctx) {
 

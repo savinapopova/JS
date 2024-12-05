@@ -1,5 +1,5 @@
-import {getUrl, html, render, page} from "./lib.js";
-import {get, post} from "./request.js";
+import {getUrl, html, render, page} from "../api/lib.js";
+import {get, post} from "../api/request.js";
 
 const loginTemplate = (ctx) => html`
         <section id="login">

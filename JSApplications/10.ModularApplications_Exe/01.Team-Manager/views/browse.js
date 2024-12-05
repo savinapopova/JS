@@ -1,7 +1,8 @@
-import {getUrl, html, loggedUser, render} from "./lib.js";
-import {get} from "./request.js";
+import {getUrl, html, loggedUser, render} from "../api/lib.js";
+import {get} from "../api/request.js";
+import {getMembers} from "../src/util.js";
 
-const browseTemplate = (teams) => html`
+const browseTemplate = (teams, members) => html`
     <section id="browse">
         <article class="pad-med">
             <h1>Team Browser</h1>
@@ -12,18 +13,18 @@ const browseTemplate = (teams) => html`
                 <div class="pad-small"><a href="#" class="action cta">Create Team</a></div>
             </article>` 
                 : ''}
-        ${teams.map(cardTemplate)}
+        ${teams.map(t => cardTemplate(t, members.filter(m => m.teamId === t._id).length))}
     </section>
 `;
 
-const cardTemplate = (team) => html`
+const cardTemplate = (team, count) => html`
     <article class="layout">
         <img src="${team.logoUrl}" class="team-logo left-col">
         <div class="tm-preview">
             <h2>${team.name}</h2>
             <p>${team.description}</p>
-            <span class="details">150 Members</span>
-            <div><a href="#" class="action">See details</a></div>
+            <span class="details">${count} Members</span>
+            <div><a href="/details/${team._id}" class="action">See details</a></div>
         </div>
     </article>
 `;
@@ -31,9 +32,9 @@ const cardTemplate = (team) => html`
 export async function showBrowse(ctx) {
     try {
         let teams = await get(getUrl().browse);
+        let members = await getMembers();
 
-        render(browseTemplate(teams), ctx.root);
-
+        render(browseTemplate(teams, members), ctx.root);
     } catch (e) {
         console.log(e);
         return;

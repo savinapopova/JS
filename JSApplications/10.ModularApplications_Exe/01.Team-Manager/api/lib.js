@@ -11,6 +11,7 @@ function getUrl() {
         login: 'http://localhost:3030/users/login',
         logout: 'http://localhost:3030/users/logout',
         browse: 'http://localhost:3030/data/teams/',
+        members: 'http://localhost:3030/data/members?where=status%3D%22member%22',
 
     }
 
